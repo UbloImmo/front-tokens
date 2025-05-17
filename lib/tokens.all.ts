@@ -1946,6 +1946,58 @@ export const tokens = [
     }
   },
   {
+    "name": "sauge/base",
+    "type": "COLOR",
+    "value": "rgba(45, 77, 55, 1)",
+    "css": {
+      "style": {
+        "opacity": "1",
+        "mixBlendMode": "normal",
+        "background": "rgba(45, 77, 55, 1)"
+      },
+      "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(45, 77, 55, 1);"
+    }
+  },
+  {
+    "name": "sauge/dark",
+    "type": "COLOR",
+    "value": "rgba(30, 36, 30, 1)",
+    "css": {
+      "style": {
+        "opacity": "1",
+        "mixBlendMode": "normal",
+        "background": "rgba(30, 36, 30, 1)"
+      },
+      "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(30, 36, 30, 1);"
+    }
+  },
+  {
+    "name": "sauge/light",
+    "type": "COLOR",
+    "value": "rgba(232, 243, 235, 1)",
+    "css": {
+      "style": {
+        "opacity": "1",
+        "mixBlendMode": "normal",
+        "background": "rgba(232, 243, 235, 1)"
+      },
+      "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(232, 243, 235, 1);"
+    }
+  },
+  {
+    "name": "sauge/medium",
+    "type": "COLOR",
+    "value": "rgba(140, 186, 147, 1)",
+    "css": {
+      "style": {
+        "opacity": "1",
+        "mixBlendMode": "normal",
+        "background": "rgba(140, 186, 147, 1)"
+      },
+      "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(140, 186, 147, 1);"
+    }
+  },
+  {
     "name": "shadow/button",
     "type": "EFFECT",
     "value": "0rem 0rem 0.0625rem 0rem rgba(41, 46, 60, 0.2000), 0rem 0.0625rem 0.1875rem 0rem rgba(41, 46, 60, 0.0800)",
@@ -2474,14 +2526,14 @@ export const tokens = [
   {
     "name": "wisteria/base",
     "type": "COLOR",
-    "value": "rgba(67, 25, 176, 1)",
+    "value": "rgba(63, 34, 170, 1)",
     "css": {
       "style": {
         "opacity": "1",
         "mixBlendMode": "normal",
-        "background": "rgba(67, 25, 176, 1)"
+        "background": "rgba(63, 34, 170, 1)"
       },
-      "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(67, 25, 176, 1);"
+      "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(63, 34, 170, 1);"
     }
   },
   {

@@ -2070,6 +2070,64 @@ export const COLOR = {
       }
     }
   },
+  "sauge": {
+    "name": "sauge",
+    "type": "COLOR",
+    "tokens": {
+      "base": {
+        "name": "base",
+        "type": "COLOR",
+        "value": "rgba(45, 77, 55, 1)",
+        "css": {
+          "style": {
+            "opacity": "1",
+            "mixBlendMode": "normal",
+            "background": "rgba(45, 77, 55, 1)"
+          },
+          "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(45, 77, 55, 1);"
+        }
+      },
+      "dark": {
+        "name": "dark",
+        "type": "COLOR",
+        "value": "rgba(30, 36, 30, 1)",
+        "css": {
+          "style": {
+            "opacity": "1",
+            "mixBlendMode": "normal",
+            "background": "rgba(30, 36, 30, 1)"
+          },
+          "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(30, 36, 30, 1);"
+        }
+      },
+      "light": {
+        "name": "light",
+        "type": "COLOR",
+        "value": "rgba(232, 243, 235, 1)",
+        "css": {
+          "style": {
+            "opacity": "1",
+            "mixBlendMode": "normal",
+            "background": "rgba(232, 243, 235, 1)"
+          },
+          "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(232, 243, 235, 1);"
+        }
+      },
+      "medium": {
+        "name": "medium",
+        "type": "COLOR",
+        "value": "rgba(140, 186, 147, 1)",
+        "css": {
+          "style": {
+            "opacity": "1",
+            "mixBlendMode": "normal",
+            "background": "rgba(140, 186, 147, 1)"
+          },
+          "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(140, 186, 147, 1);"
+        }
+      }
+    }
+  },
   "sienna": {
     "name": "sienna",
     "type": "COLOR",
@@ -2541,14 +2599,14 @@ export const COLOR = {
       "base": {
         "name": "base",
         "type": "COLOR",
-        "value": "rgba(67, 25, 176, 1)",
+        "value": "rgba(63, 34, 170, 1)",
         "css": {
           "style": {
             "opacity": "1",
             "mixBlendMode": "normal",
-            "background": "rgba(67, 25, 176, 1)"
+            "background": "rgba(63, 34, 170, 1)"
           },
-          "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(67, 25, 176, 1);"
+          "rules": "opacity: 1;\nmix-blend-mode: normal;\nbackground: rgba(63, 34, 170, 1);"
         }
       },
       "dark": {
