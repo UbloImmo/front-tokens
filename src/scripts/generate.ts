@@ -16,9 +16,10 @@ import {
   groupTokens,
   unwrapTokenValues,
 } from "../transformers/token.transfomer";
-import { Icon, Token } from "../types/global/export.types";
+import type { Icon, Token } from "../types/global/export.types";
 import { generateExportedTS } from "../transformers/export.transformer";
 import { fetchIconSvgs } from "../transformers/icon.transformer";
+import type { FigmaComponentMetadata } from "../types/figma/figma.teams.types";
 
 const logger = Logger({
   spacing: 1,
@@ -102,27 +103,20 @@ const fetchIconsMetadata = async (
   figmaApiClient: FigmaApiClient,
   teamId: FigmaTeamId,
   iconFileKey: FigmaFileKey
-) => {
+): Promise<FigmaComponentMetadata[]> => {
   info("Fetching all components in the exported team styles...");
-  const componentsResponse = await figmaApiClient.getTeamComponents(teamId, {
-    page_size: 10000,
-  });
 
-  if (!componentsResponse) return [];
-  if (componentsResponse.error) {
-    warn(componentsResponse.error);
+  const fileComponentsResponse = await figmaApiClient.getFileComponents(
+    iconFileKey
+  );
+
+  if (!fileComponentsResponse) {
     return [];
   }
-  if (componentsResponse.meta.components.length === 0) {
-    return [];
-  }
-  info(
-    `Filtering ${componentsResponse.meta.components.length} components based on the icon file key...`
-  );
-  const filteredComponents = componentsResponse.meta.components.filter(
-    (item) => item.file_key === iconFileKey
-  );
-  return filteredComponents;
+
+  if (!fileComponentsResponse.meta.components.length) return [];
+
+  return fileComponentsResponse.meta.components;
 };
 
 /**
@@ -157,7 +151,7 @@ const generateAndExportIcons = async (
  * @returns {Promise<{tokens: Token[], icons: Icon[]}>} - Array containing all generated tokens according to env config
  */
 export const generate = async () => {
-  info("Validating config...");
+  info("Validating config...", "Generate");
   const config = validateConfig(
     {
       FIGMA_TOKEN,
@@ -167,10 +161,10 @@ export const generate = async () => {
     },
     logger
   );
-  info("Config validated");
-  info("Initializing Figma API client...");
+  info("Config validated", "Generate");
+  info("Initializing Figma API client...", "Generate");
   const figmaApiClient = new FigmaApiClient(config.FIGMA_TOKEN);
-  info("Figma API client initialized");
+  info("Figma API client initialized", "Generate");
   const icons = await generateAndExportIcons(
     figmaApiClient,
     config.FIGMA_TEAM_ID,
@@ -189,6 +183,8 @@ export const generate = async () => {
     icons,
     logger
   );
+
+  info("Done!", "Generate");
 
   return {
     tokens,

@@ -177,7 +177,7 @@ export const generateExportedTS = async (
   icons: Icon[],
   logger = Logger()
 ) => {
-  logger.info("Constructing file data...");
+  logger.info("Constructing file data...", "Generate");
   let libFiles = [
     generateLibAllTokens(allTokens),
     generateLibRootTokenCollection(rootCollection),
