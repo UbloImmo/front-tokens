@@ -40,7 +40,7 @@
   "homepage": "https://github.com/UbloImmo/front-tokens",
   "repository": {
     "type": "git",
-    "url": "https://github.com/UbloImmo/front-tokens"
+    "url": "git+https://github.com/UbloImmo/front-tokens.git"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.58.12",
