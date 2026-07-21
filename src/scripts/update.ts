@@ -8,6 +8,7 @@ import { Logger } from "../utils/log.utils";
 import { Diff, Icon, Token } from "../types/global/export.types";
 import { generate } from "./generate";
 import { objectEntries } from "@ubloimmo/front-util";
+import { bundle } from "./bundle";
 
 const logger = Logger();
 
@@ -44,7 +45,7 @@ const fetchPreviousExports = async <TData extends Record<string, unknown>>(
   logKey: KeyOfType<TData, string | number>,
   label: string = exportName
 ): Promise<TData[]> => {
-  logger.info(`Fetching previouly generated ${label}...`);
+  logger.info(`Fetching previouly generated ${label}...`, "Update");
   try {
     const { [exportName]: exports } = await import(`../.${filePath}`);
     const data: TData[] = exports as TData[];
@@ -56,7 +57,7 @@ const fetchPreviousExports = async <TData extends Record<string, unknown>>(
     );
     return [...data];
   } catch (e) {
-    logger.warn(`No previously generated ${label} found`);
+    logger.warn(`No previously generated ${label} found`, "Update");
     return [];
   }
 };
@@ -106,7 +107,7 @@ const compareDiff = <TData extends Record<string, unknown>>(
   compareKey: keyof TData,
   logKey: KeyOfType<TData, string | number>
 ): Diff<TData> => {
-  logger.info(`Comparing new ${label}s to old ${label}s`);
+  logger.info(`Comparing new ${label}s to old ${label}s`, "Update");
   const previousDataValues = previousData.map((data) => data[logKey]);
   const freshDataValues = freshData.map((data) => data[logKey]);
 
@@ -114,7 +115,8 @@ const compareDiff = <TData extends Record<string, unknown>>(
     (freshItem) => !previousDataValues.includes(freshItem[logKey])
   );
   logger.warn(
-    `Generated ${added.length} new ${label}s.\n${formatListLog(added, logKey)}`
+    `Generated ${added.length} new ${label}s.\n${formatListLog(added, logKey)}`,
+    "Update"
   );
   const removed = [...previousData].filter(
     (prevItem) => !freshDataValues.includes(prevItem[logKey])
@@ -136,7 +138,8 @@ const compareDiff = <TData extends Record<string, unknown>>(
     `Updated ${updated.length} existing ${label}s.\n${formatListLog(
       updated,
       logKey
-    )}`
+    )}`,
+    "Update"
   );
 
   const changes = added.length + removed.length + updated.length;
@@ -252,11 +255,13 @@ export const update = async () => {
   const version = incrementRevision(currentVersion);
   const message = generateCommitMessage(tokenDiffs, iconDiffs, version);
 
-  return writeOutput({
+  await writeOutput({
     changes: true,
     version,
     message,
   });
+
+  return bundle();
 };
 
 await update();
