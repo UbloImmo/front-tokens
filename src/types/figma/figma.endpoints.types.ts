@@ -216,10 +216,15 @@ type GetMetadataEndpointQueryParams = {
   before?: number;
 };
 
-type FigmaPaginationCursor = {
-  before: number;
-  after: number;
-};
+type FigmaPaginationCursor =
+  | {
+      before: number;
+      after?: never;
+    }
+  | {
+      before?: never;
+      after: number;
+    };
 
 export type GetTeamComponentsEndpointQueryParams =
   GetMetadataEndpointQueryParams;
@@ -234,8 +239,8 @@ export type GetTeamComponentsEndpointResponse = {
    */
   meta: {
     components: FigmaComponentMetadata[];
+    cursor: FigmaPaginationCursor;
   };
-  cursor: FigmaPaginationCursor;
 };
 
 export type GetTeamComponentSetsEndpointQueryParams =
@@ -251,8 +256,8 @@ export type GetTeamComponentSetsEndpointResponse = {
    */
   meta: {
     component_sets: FigmaComponentSetMetadata[];
+    cursor: FigmaPaginationCursor;
   };
-  cursor: FigmaPaginationCursor;
 };
 
 export type GetFileComponentsEndpointResponse = Omit<
@@ -287,8 +292,8 @@ export type GetTeamStylesEndpointResponse = {
   message?: string;
   meta: {
     styles: FigmaStyleMetadata[];
+    cursor: FigmaPaginationCursor;
   };
-  cursor: FigmaPaginationCursor;
 };
 
 export type GetFileStylesEndpointResponse = Omit<
@@ -300,7 +305,7 @@ export type GetStyleEndpointResponse = {
   status: number;
   error?: boolean;
   message?: string;
-  meta: FigmaStyleMetadata[];
+  meta: FigmaStyleMetadata;
 };
 
 export type GetFileLocalVariablesEndpointResponse = {
