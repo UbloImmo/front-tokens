@@ -3,8 +3,8 @@
   "description": "Figma team styles converted to code-ready css tokens",
   "version": "0.2.4",
   "private": false,
-  "module": "lib/index.ts",
-  "main": "lib/index.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
   "author": "Jean-Nicolas Veigel <art.jnveigel@gmail.com>",
   "license": "MIT",
   "files": [
