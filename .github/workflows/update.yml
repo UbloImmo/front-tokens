@@ -150,13 +150,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.bumper_token.outputs.token }}
 
-      - name: "Re-pull repo"
-        if: steps.token_update.outputs.changes == 'true'
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          token: ${{ steps.bumper_token.outputs.token }}
-
       - name: NPM publish
         id: npm_publish
         if: steps.token_update.outputs.changes == 'true'
